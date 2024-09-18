@@ -1,0 +1,14 @@
+
+
+# Default ignored files
+PerfectFit/.idea/shelf/
+PerfectFit/.idea/workspace.xml
+/PerfectFit/.env
+PerfectFit/.env
+.env
+
+# Editor-based HTTP Client requests
+PerfectFit/.idea/httpRequests/
+# Datasource local storage ignored files
+PerfectFit/.idea/dataSources/
+PerfectFit/.idea/dataSources.local.xml
