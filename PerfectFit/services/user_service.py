@@ -1,10 +1,10 @@
-from domain.models.User import User
+from domain.models.user import User
 from utils import open_ai
 
 
 class UserService:
     @staticmethod
-    def get_all_users():
+    def get_users():
         try:
             users = User.query.all()  # 모든 사용자 데이터 가져오기
             print(f"Fetched users: {users}")  # 쿼리된 데이터 확인
