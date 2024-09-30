@@ -1,17 +1,33 @@
 from dataclasses import asdict
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, render_template, request
 
-from dto.user.intro_user import IntroUserDto
-from dto.user.user_dto import UserDto
+from dto.user.user import UserDto
 from services.user_service import UserService
 
-user_bp = Blueprint('user', __name__, url_prefix='/user')
+user_bp = Blueprint('user', __name__)
 
 
-@user_bp.route('/')
+@user_bp.route('/users')
 def get_users():
-    users = UserService.get_users()
-    response: UserDto.Response.Users = UserDto.Response.Users([IntroUserDto(user.id, user.name) for user in users])
+    page = request.args.get('page', default=1, type=int)
+    count = request.args.get('count', default=10, type=int)
 
-    return jsonify(asdict(response))
+    paginate_user = UserService.get_users(page, count)
+    response: UserDto.Response.Users = UserDto.Response.Users(
+        users=[UserDto.Response.IntroUser(user.id, user.name) for user in paginate_user.items],
+        pages=paginate_user.pages,
+    )
+
+    return render_template("users.html", users=asdict(response))
+
+
+@user_bp.route('/user/<user_id>')
+def get_user(user_id: int):
+    user = UserService.get_user(user_id)
+    if not user:
+        return render_template("user.html")
+
+    response: UserDto.Response.IntroUser = UserDto.Response.IntroUser(user.id, user.name)
+
+    return render_template("user.html", user=response)
