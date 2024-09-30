@@ -19,7 +19,7 @@ app.register_blueprint(user_bp)
 
 @app.route('/')
 def hello_world():
-    return render_template("index.html")
+    return render_template("main.html")
 
 
 if __name__ == '__main__':

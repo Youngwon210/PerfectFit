@@ -1,0 +1,28 @@
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.30);
+}
+
+.header-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.header-nav {
+    background-color: inherit !important;
+}
+
+.header-nav a {
+    font-size: 1rem !important;
+}
+
+.uk-navbar-dropdown-nav a {
+    font-size: 0.875rem !important;
+}
+
+.logo {
+    margin-right: 60px;
+}
+
+.uk-drop {
+    top: initial !important;
+}
