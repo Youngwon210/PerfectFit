@@ -1,7 +1,6 @@
 from flask import flash
 
 from domain.models.user import User
-from utils import open_ai
 
 
 class UserService:
@@ -9,8 +8,6 @@ class UserService:
     def get_users(page: int, count: int):
         try:
             paginate_user = User.query.paginate(page=page, per_page=count, error_out=False)
-
-            open_ai.get_dinner_recommendation()
             return paginate_user
         except Exception as e:
             print(f"Error fetching users: {e}")  # 에러 발생 시 메시지 출력

@@ -1,12 +1,9 @@
 import json
 import os
-from dotenv import load_dotenv
+
 import requests
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM,pipeline
-
-# .env 파일 로드
-load_dotenv()
 
 # OpenAI API 키 가져오기
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
