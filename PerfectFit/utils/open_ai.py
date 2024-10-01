@@ -73,6 +73,28 @@ def get_test_llama():
     else:
         print("Error:", response.status_code, response.text)
 
+def get_test_llama_transformers():
+    # Hugging Face의 pipeline 사용
+    model_id = "beomi/KoAlpaca-Polyglot-5.8B"
+    
+    pipe = pipeline("text-generation", model=model_id)
+
+    # 프롬프트 설정
+    prompt = "<|begin_of_text|><|start_header_id|>너는 IT 기업 채용을 위해 초빙 된, 한국인 면접 전문가야<|end_header_id|> " \
+             "너는 한국어로만 말을 해야해. " \
+             "백엔드 개발자 직군 채용 면접을 진행중이야. 질문을 5개 만들어줘" \
+
+    # Hugging Face pipeline을 사용하여 응답 생성
+    response = pipe(prompt, max_length=512, num_return_sequences=1)
+
+    # 응답 출력
+    res_text = response[0]['generated_text']
+    print(res_text)
+    res_text = response[0]['generated_text']
+    print(response)
+    print(response[0])
+    print(response[1])
+
 def get_test_transformers_llama() :
     # model_id = 'llama3:latest'
 
