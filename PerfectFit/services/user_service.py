@@ -7,7 +7,6 @@ class UserService:
     @staticmethod
     def get_users(page: int, count: int):
         try:
-            get_test_llama()
             paginate_user = User.query.paginate(page=page, per_page=count, error_out=False)
             return paginate_user
         except Exception as e:

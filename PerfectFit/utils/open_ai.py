@@ -89,11 +89,8 @@ def get_test_llama_transformers():
 
     # 응답 출력
     res_text = response[0]['generated_text']
-    print(res_text)
+
     res_text = response[0]['generated_text']
-    print(response)
-    print(response[0])
-    print(response[1])
 
 def get_test_transformers_llama() :
     # model_id = 'llama3:latest'
