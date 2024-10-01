@@ -1,7 +1,7 @@
 from flask import flash
 
 from domain.models.user import User
-
+from utils.open_ai import get_test_llama_transformers, get_test_llama
 
 class UserService:
     @staticmethod
