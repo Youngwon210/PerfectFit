@@ -1,12 +1,13 @@
 from flask import flash
 
 from domain.models.user import User
-
+from utils.open_ai import get_test_llama_transformers, get_test_llama
 
 class UserService:
     @staticmethod
     def get_users(page: int, count: int):
         try:
+            get_test_llama()
             paginate_user = User.query.paginate(page=page, per_page=count, error_out=False)
             return paginate_user
         except Exception as e:
